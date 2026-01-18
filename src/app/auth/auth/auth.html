@@ -1,1 +1,128 @@
-<p>auth works!</p>
+<div class="auth-wrapper d-flex align-items-center justify-content-center">
+  <div class="glass-card text-center">
+
+    <!-- Heading -->
+    <h2 class="portal-title mb-4">CDAC Exam Portal</h2>
+
+    <!-- Toggle Buttons -->
+    <!-- Capsule Toggle -->
+<div class="capsule-toggle mb-4">
+  <div class="capsule-bg" [class.right]="!isLogin()"></div>
+
+  <button
+    type="button"
+    class="capsule-btn"
+    [class.active]="isLogin()"
+    (click)="toggleForm('login')">
+    Login
+  </button>
+
+  <button
+    type="button"
+    class="capsule-btn"
+    [class.active]="!isLogin()"
+    (click)="toggleForm('register')">
+    Register
+  </button>
+</div>
+
+
+    <!-- Forms -->
+    @if (isLogin()) {
+
+      <!-- Login Form -->
+      <form (ngSubmit)="onLogin()" class="fade-in">
+        <div class="mb-3 text-start">
+          <label class="form-label">Student ID</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Student ID"
+            [(ngModel)]="loginStudentId"
+            name="loginStudentId"
+            [disabled]="isLoading()"
+            required>
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Enter Password"
+            [(ngModel)]="loginPassword"
+            name="loginPassword"
+            [disabled]="isLoading()"
+            required>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100 mt-3"
+          [disabled]="isLoading()">
+          @if (isLoading()) {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Logging in...
+          } @else {
+            Login
+          }
+        </button>
+      </form>
+
+    } @else {
+
+      <!-- Register Form -->
+      <form (ngSubmit)="onRegister()" class="fade-in">
+        <div class="mb-3 text-start">
+          <label class="form-label">Email ID</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter Email"
+            [(ngModel)]="registerEmail"
+            name="registerEmail"
+            [disabled]="isLoading()"
+            required>
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">Student ID</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Student ID"
+            [(ngModel)]="registerStudentId"
+            name="registerStudentId"
+            [disabled]="isLoading()"
+            required>
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Create Password"
+            [(ngModel)]="registerPassword"
+            name="registerPassword"
+            [disabled]="isLoading()"
+            required>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100 mt-3"
+          [disabled]="isLoading()">
+          @if (isLoading()) {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Registering...
+          } @else {
+            Register
+          }
+        </button>
+      </form>
+
+    }
+
+  </div>
+</div>
