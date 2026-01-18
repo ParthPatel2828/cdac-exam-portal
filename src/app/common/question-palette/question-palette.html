@@ -1,0 +1,17 @@
+<div class="palette-card">
+  <h6 class="mb-3">Questions</h6>
+
+  <div class="question-grid">
+    @for (q of questions; track q) {
+      <button
+        class="q-btn"
+        [ngClass]="getQuestionStatus(q)"
+        (click)="onSelectQuestion(q)">
+        {{ q }}
+      </button>
+    }
+  </div>
+
+  <div class="legend mt-4">
+    <div><span class="legend-dot current"></span> Current</div>
+    <div><span class="legend-dot answered"></span> Answered (5)</div>

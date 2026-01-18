@@ -1,0 +1,148 @@
+.palette-card {
+  background: #fff;
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  h6 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.q-btn {
+  aspect-ratio: 1 / 1;
+  min-height: 44px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+  color: #4b5563;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover:not(.current):not(.answered) {
+    border-color: #d1d5db;
+    background: #f9fafb;
+  }
+
+  &.current {
+    background: #6366f1;
+    color: #fff;
+    border-color: #6366f1;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  }
+
+  &.answered {
+    background: #dc2626;
+    color: #fff;
+    border-color: #dc2626;
+    font-weight: 700;
+  }
+
+  &.unanswered {
+    background: #fff;
+    color: #4b5563;
+    border-color: #e5e7eb;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+}
+
+.legend {
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 0;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  color: #6b7280;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+    flex-shrink: 0;
+
+    &.current {
+      background: #6366f1;
+    }
+
+    &.answered {
+      background: #dc2626;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .question-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .q-btn {
+    min-height: 40px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .palette-card {
+    padding: 20px;
+  }
+
+  .question-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .q-btn {
+    min-height: 36px;
+    font-size: 12px;
+  }
+
+  .legend {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .question-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .q-btn {
+    min-height: 32px;
+    font-size: 11px;
+  }
+}
+
