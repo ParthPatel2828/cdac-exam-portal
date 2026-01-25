@@ -29,291 +29,131 @@ export class QuestionService {
   public userAnswers$ = this.userAnswers.asObservable();
 
   private mockData: ExamData = {
-    examTitle: 'Mock Test - Java & Python (OOP)',
-    totalQuestions: 30,
-    questions: [
-      {
-        id: 1,
-        subject: 'Java',
-        question: 'Which keyword is used to inherit a class in Java?',
-        options: ['this', 'super', 'extends', 'implements'],
-        correctAnswer: 'extends'
-      },
-      {
-        id: 2,
-        subject: 'Java',
-        question: 'Which of these is not a Java feature?',
-        options: ['Object-oriented', 'Use of pointers', 'Portable', 'Secure'],
-        correctAnswer: 'Use of pointers'
-      },
-      {
-        id: 3,
-        subject: 'Java',
-        question: 'What is the default value of an int variable in Java?',
-        options: ['0', '1', 'null', 'undefined'],
-        correctAnswer: '0'
-      },
-      {
-        id: 4,
-        subject: 'Java',
-        question: 'Which method is the entry point of a Java program?',
-        options: ['start()', 'main()', 'run()', 'init()'],
-        correctAnswer: 'main()'
-      },
-      {
-        id: 5,
-        subject: 'Java',
-        question: 'Which access modifier makes a variable visible only within the same class?',
-        options: ['public', 'protected', 'default', 'private'],
-        correctAnswer: 'private'
-      },
-      {
-        id: 6,
-        subject: 'Python',
-        question: 'Which symbol is used for comments in Python?',
-        options: ['//', '#', '/* */', '--'],
-        correctAnswer: '#'
-      },
-      {
-        id: 7,
-        subject: 'Python',
-        question: 'What is the output of: print(type([]))?',
-        options: ['list', "<class 'list'>", 'array', '<list>'],
-        correctAnswer: "<class 'list'>"
-      },
-      {
-        id: 8,
-        subject: 'Python',
-        question: 'Which keyword is used to define a function in Python?',
-        options: ['function', 'def', 'fun', 'define'],
-        correctAnswer: 'def'
-      },
-      {
-        id: 9,
-        subject: 'Python',
-        question: 'Which data type is immutable in Python?',
-        options: ['List', 'Dictionary', 'Set', 'Tuple'],
-        correctAnswer: 'Tuple'
-      },
-      {
-        id: 10,
-        subject: 'Python',
-        question: 'What does len() function do?',
-        options: ['Returns type', 'Returns length', 'Returns value', 'Returns index'],
-        correctAnswer: 'Returns length'
-      },
-      {
-        id: 11,
-        subject: 'OOP',
-        question: 'Which OOP concept binds data and methods together?',
-        options: ['Inheritance', 'Encapsulation', 'Polymorphism', 'Abstraction'],
-        correctAnswer: 'Encapsulation'
-      },
-      {
-        id: 12,
-        subject: 'OOP',
-        question: 'What is inheritance?',
-        options: [
-          'Creating objects',
-          'Acquiring properties of another class',
-          'Hiding data',
-          'Overloading methods'
-        ],
-        correctAnswer: 'Acquiring properties of another class'
-      },
-      {
-        id: 13,
-        subject: 'OOP',
-        question: 'Which concept allows method overriding?',
-        options: ['Encapsulation', 'Inheritance', 'Abstraction', 'Interface'],
-        correctAnswer: 'Inheritance'
-      },
-      {
-        id: 14,
-        subject: 'OOP',
-        question: 'What does polymorphism mean?',
-        options: [
-          'One form',
-          'Multiple forms',
-          'Many objects',
-          'Data hiding'
-        ],
-        correctAnswer: 'Multiple forms'
-      },
-      {
-        id: 15,
-        subject: 'Java',
-        question: 'What is the size of int in Java?',
-        options: ['2 bytes', '4 bytes', '8 bytes', '16 bytes'],
-        correctAnswer: '4 bytes'
-      },
-      {
-        id: 16,
-        subject: 'Java',
-        question: 'Which class is the superclass of all classes in Java?',
-        options: ['String', 'System', 'Object', 'Class'],
-        correctAnswer: 'Object'
-      },
-      {
-        id: 17,
-        subject: 'Python',
-        question: 'What is a dictionary in Python?',
-        options: [
-          'An ordered collection',
-          'An unordered collection of key-value pairs',
-          'A sequence of numbers',
-          'A string collection'
-        ],
-        correctAnswer: 'An unordered collection of key-value pairs'
-      },
-      {
-        id: 18,
-        subject: 'Python',
-        question: 'Which method adds an element to a Python list?',
-        options: ['add()', 'push()', 'append()', 'insert_element()'],
-        correctAnswer: 'append()'
-      },
-      {
-        id: 19,
-        subject: 'OOP',
-        question: 'What is an abstract class?',
-        options: [
-          'A class that cannot be instantiated',
-          'A class with only one method',
-          'A class that is inherited',
-          'A class with no variables'
-        ],
-        correctAnswer: 'A class that cannot be instantiated'
-      },
-      {
-        id: 20,
-        subject: 'OOP',
-        question: 'What is an interface?',
-        options: [
-          'A class with implementation',
-          'A blueprint for classes',
-          'A variable type',
-          'A function definition'
-        ],
-        correctAnswer: 'A blueprint for classes'
-      },
-      {
-        id: 21,
-        subject: 'Java',
-        question: 'What is the use of the static keyword?',
-        options: [
-          'To declare constant variables',
-          'To make members belong to the class',
-          'To define methods',
-          'To import classes'
-        ],
-        correctAnswer: 'To make members belong to the class'
-      },
-      {
-        id: 22,
-        subject: 'Java',
-        question: 'What does synchronized keyword do?',
-        options: [
-          'Speeds up execution',
-          'Provides thread safety',
-          'Compiles code',
-          'Creates objects'
-        ],
-        correctAnswer: 'Provides thread safety'
-      },
-      {
-        id: 23,
-        subject: 'Python',
-        question: 'What is the range() function used for?',
-        options: [
-          'To define a range of numbers',
-          'To measure distance',
-          'To find maximum value',
-          'To sort elements'
-        ],
-        correctAnswer: 'To define a range of numbers'
-      },
-      {
-        id: 24,
-        subject: 'Python',
-        question: 'Which keyword is used to handle exceptions in Python?',
-        options: ['try', 'catch', 'handle', 'error'],
-        correctAnswer: 'try'
-      },
-      {
-        id: 25,
-        subject: 'OOP',
-        question: 'What is encapsulation?',
-        options: [
-          'Wrapping code in a class',
-          'Hiding internal details and showing only necessary details',
-          'Creating multiple objects',
-          'Inheriting properties'
-        ],
-        correctAnswer: 'Hiding internal details and showing only necessary details'
-      },
-      {
-        id: 26,
-        subject: 'OOP',
-        question: 'What is composition?',
-        options: [
-          'Having objects of other classes as member variables',
-          'Inheriting from multiple classes',
-          'Using multiple functions',
-          'Creating new classes'
-        ],
-        correctAnswer: 'Having objects of other classes as member variables'
-      },
-      {
-        id: 27,
-        subject: 'Java',
-        question: 'What is a constructor?',
-        options: [
-          'A method that destroys objects',
-          'A method that initializes objects',
-          'A method that creates variables',
-          'A method that deletes memory'
-        ],
-        correctAnswer: 'A method that initializes objects'
-      },
-      {
-        id: 28,
-        subject: 'Python',
-        question: 'What does the map() function do?',
-        options: [
-          'Creates a dictionary',
-          'Applies a function to items of a list',
-          'Sorts elements',
-          'Filters elements'
-        ],
-        correctAnswer: 'Applies a function to items of a list'
-      },
-      {
-        id: 29,
-        subject: 'OOP',
-        question: 'What is method overloading?',
-        options: [
-          'Creating multiple methods with the same name but different parameters',
-          'Using multiple methods in a class',
-          'Inheriting multiple methods',
-          'Creating methods with no parameters'
-        ],
-        correctAnswer: 'Creating multiple methods with the same name but different parameters'
-      },
-      {
-        id: 30,
-        subject: 'Java',
-        question: 'What is the purpose of the finally block?',
-        options: [
-          'To execute code only when exception occurs',
-          'To execute code regardless of exception',
-          'To initialize variables',
-          'To declare methods'
-        ],
-        correctAnswer: 'To execute code regardless of exception'
-      }
-    ]
-  };
+  "examTitle": "Mock Test - Java, Python & OOP",
+  "totalQuestions": 100,
+  "questions": [
+    { "id": 1, "subject": "Java", "question": "Which keyword is used to inherit a class in Java?", "options": ["this", "super", "extends", "implements"], "correctAnswer": "extends" },
+    { "id": 2, "subject": "Java", "question": "Which of these is not a Java feature?", "options": ["Object-oriented", "Use of pointers", "Portable", "Secure"], "correctAnswer": "Use of pointers" },
+    { "id": 3, "subject": "Java", "question": "Default value of int variable in Java?", "options": ["0", "1", "null", "undefined"], "correctAnswer": "0" },
+    { "id": 4, "subject": "Java", "question": "Entry point of Java program?", "options": ["start()", "main()", "run()", "init()"], "correctAnswer": "main()" },
+    { "id": 5, "subject": "Java", "question": "Which access modifier is most restrictive?", "options": ["public", "protected", "default", "private"], "correctAnswer": "private" },
+
+    { "id": 6, "subject": "Java", "question": "Which collection allows duplicates?", "options": ["Set", "List", "Map", "None"], "correctAnswer": "List" },
+    { "id": 7, "subject": "Java", "question": "Which keyword prevents inheritance?", "options": ["static", "final", "private", "protected"], "correctAnswer": "final" },
+    { "id": 8, "subject": "Java", "question": "Which exception is unchecked?", "options": ["IOException", "SQLException", "NullPointerException", "FileNotFoundException"], "correctAnswer": "NullPointerException" },
+    { "id": 9, "subject": "Java", "question": "Which keyword refers to current object?", "options": ["this", "super", "object", "current"], "correctAnswer": "this" },
+    { "id": 10, "subject": "Java", "question": "Which JVM component loads classes?", "options": ["JIT", "Class Loader", "Interpreter", "GC"], "correctAnswer": "Class Loader" },
+
+    { "id": 11, "subject": "Python", "question": "Symbol for comments in Python?", "options": ["//", "#", "/* */", "--"], "correctAnswer": "#" },
+    { "id": 12, "subject": "Python", "question": "Which keyword defines function?", "options": ["function", "def", "fun", "define"], "correctAnswer": "def" },
+    { "id": 13, "subject": "Python", "question": "Which datatype is immutable?", "options": ["List", "Set", "Dictionary", "Tuple"], "correctAnswer": "Tuple" },
+    { "id": 14, "subject": "Python", "question": "Output of print(2**3)?", "options": ["6", "8", "9", "Error"], "correctAnswer": "8" },
+    { "id": 15, "subject": "Python", "question": "Which function gives length?", "options": ["size()", "count()", "len()", "length()"], "correctAnswer": "len()" },
+
+    { "id": 16, "subject": "Python", "question": "Which loop does not exist in Python?", "options": ["for", "while", "do-while", "nested"], "correctAnswer": "do-while" },
+    { "id": 17, "subject": "Python", "question": "Which module supports regex?", "options": ["regex", "re", "pyregex", "express"], "correctAnswer": "re" },
+    { "id": 18, "subject": "Python", "question": "Convert string to integer?", "options": ["str()", "int()", "float()", "chr()"], "correctAnswer": "int()" },
+    { "id": 19, "subject": "Python", "question": "What is PEP 8?", "options": ["Compiler", "Library", "Style guide", "Version"], "correctAnswer": "Style guide" },
+    { "id": 20, "subject": "Python", "question": "Output of type([])?", "options": ["list", "<class 'list'>", "array", "[]"], "correctAnswer": "<class 'list'>" },
+
+    { "id": 21, "subject": "OOP", "question": "Binding data and methods together?", "options": ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"], "correctAnswer": "Encapsulation" },
+    { "id": 22, "subject": "OOP", "question": "Acquiring properties of another class?", "options": ["Abstraction", "Inheritance", "Encapsulation", "Polymorphism"], "correctAnswer": "Inheritance" },
+    { "id": 23, "subject": "OOP", "question": "Method overriding uses?", "options": ["Encapsulation", "Inheritance", "Abstraction", "Interface"], "correctAnswer": "Inheritance" },
+    { "id": 24, "subject": "OOP", "question": "Many forms concept?", "options": ["Abstraction", "Encapsulation", "Polymorphism", "Inheritance"], "correctAnswer": "Polymorphism" },
+    { "id": 25, "subject": "OOP", "question": "Hiding implementation details?", "options": ["Inheritance", "Abstraction", "Encapsulation", "Polymorphism"], "correctAnswer": "Abstraction" },
+
+    { "id": 26, "subject": "OOP", "question": "Constructor is used for?", "options": ["Loop", "Method call", "Object initialization", "Overloading"], "correctAnswer": "Object initialization" },
+    { "id": 27, "subject": "OOP", "question": "Multiple inheritance in Java classes?", "options": ["Yes", "No", "Sometimes", "Only interfaces"], "correctAnswer": "No" },
+    { "id": 28, "subject": "OOP", "question": "Which keyword implements interface?", "options": ["extends", "implements", "interface", "inherit"], "correctAnswer": "implements" },
+    { "id": 29, "subject": "OOP", "question": "Improves code reusability?", "options": ["Abstraction", "Inheritance", "Encapsulation", "Polymorphism"], "correctAnswer": "Inheritance" },
+    { "id": 30, "subject": "OOP", "question": "Data hiding is achieved by?", "options": ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"], "correctAnswer": "Encapsulation" },
+
+    { "id": 31, "subject": "Java", "question": "Which keyword is used to create object?", "options": ["class", "object", "new", "create"], "correctAnswer": "new" },
+    { "id": 32, "subject": "Java", "question": "Which method is called automatically?", "options": ["main()", "constructor", "start()", "run()"], "correctAnswer": "constructor" },
+    { "id": 33, "subject": "Java", "question": "Which collection stores key-value pairs?", "options": ["List", "Set", "Map", "Array"], "correctAnswer": "Map" },
+    { "id": 34, "subject": "Java", "question": "Which keyword is used for exception handling?", "options": ["catch", "throw", "try", "All"], "correctAnswer": "All" },
+    { "id": 35, "subject": "Java", "question": "Which interface is used for sorting?", "options": ["Serializable", "Comparable", "Runnable", "Cloneable"], "correctAnswer": "Comparable" },
+
+    { "id": 36, "subject": "Python", "question": "Which keyword handles exceptions?", "options": ["catch", "handle", "except", "error"], "correctAnswer": "except" },
+    { "id": 37, "subject": "Python", "question": "Which operator is used for power?", "options": ["^", "**", "//", "%"], "correctAnswer": "**" },
+    { "id": 38, "subject": "Python", "question": "Which datatype stores key-value?", "options": ["List", "Tuple", "Dictionary", "Set"], "correctAnswer": "Dictionary" },
+    { "id": 39, "subject": "Python", "question": "Which keyword stops loop?", "options": ["stop", "exit", "break", "end"], "correctAnswer": "break" },
+    { "id": 40, "subject": "Python", "question": "Index of first element?", "options": ["0", "1", "-1", "None"], "correctAnswer": "0" },
+
+    { "id": 41, "subject": "OOP", "question": "Interface supports?", "options": ["Multiple inheritance", "Single inheritance", "No inheritance", "Private methods"], "correctAnswer": "Multiple inheritance" },
+    { "id": 42, "subject": "OOP", "question": "Which is not OOP principle?", "options": ["Encapsulation", "Compilation", "Inheritance", "Abstraction"], "correctAnswer": "Compilation" },
+    { "id": 43, "subject": "OOP", "question": "Superclass is also called?", "options": ["Child", "Derived", "Parent", "Object"], "correctAnswer": "Parent" },
+    { "id": 44, "subject": "OOP", "question": "Method overloading occurs at?", "options": ["Compile time", "Run time", "Link time", "Load time"], "correctAnswer": "Compile time" },
+    { "id": 45, "subject": "OOP", "question": "Method overriding occurs at?", "options": ["Compile time", "Run time", "Link time", "Load time"], "correctAnswer": "Run time" },
+
+    { "id": 46, "subject": "Java", "question": "Which package contains Scanner?", "options": ["java.io", "java.lang", "java.util", "java.net"], "correctAnswer": "java.util" },
+    { "id": 47, "subject": "Java", "question": "Which keyword is used to call parent constructor?", "options": ["this", "super", "parent", "base"], "correctAnswer": "super" },
+    { "id": 48, "subject": "Java", "question": "Which thread method starts execution?", "options": ["run()", "start()", "execute()", "init()"], "correctAnswer": "start()" },
+    { "id": 49, "subject": "Java", "question": "Which class is root of Java hierarchy?", "options": ["Main", "System", "Object", "Class"], "correctAnswer": "Object" },
+    { "id": 50, "subject": "Java", "question": "Which keyword is used to define constant?", "options": ["static", "final", "const", "define"], "correctAnswer": "final" },
+
+    { "id": 51, "subject": "Python", "question": "Which keyword is used to create class?", "options": ["def", "function", "class", "struct"], "correctAnswer": "class" },
+    { "id": 52, "subject": "Python", "question": "Which function reads input?", "options": ["input()", "read()", "scan()", "get()"], "correctAnswer": "input()" },
+    { "id": 53, "subject": "Python", "question": "Which keyword continues loop?", "options": ["skip", "continue", "pass", "next"], "correctAnswer": "continue" },
+    { "id": 54, "subject": "Python", "question": "Which symbol is used for floor division?", "options": ["/", "//", "%", "**"], "correctAnswer": "//" },
+    { "id": 55, "subject": "Python", "question": "Which datatype stores unique elements?", "options": ["List", "Tuple", "Set", "Dict"], "correctAnswer": "Set" },
+
+    { "id": 56, "subject": "OOP", "question": "Which concept hides complexity?", "options": ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"], "correctAnswer": "Abstraction" },
+    { "id": 57, "subject": "OOP", "question": "Can constructor be inherited?", "options": ["Yes", "No", "Sometimes", "Only abstract"], "correctAnswer": "No" },
+    { "id": 58, "subject": "OOP", "question": "Which keyword is used for runtime polymorphism?", "options": ["static", "final", "override", "virtual"], "correctAnswer": "override" },
+    { "id": 59, "subject": "OOP", "question": "Encapsulation uses?", "options": ["Classes", "Objects", "Methods", "Variables"], "correctAnswer": "Classes" },
+    { "id": 60, "subject": "OOP", "question": "Which access modifier is default?", "options": ["public", "private", "protected", "no modifier"], "correctAnswer": "no modifier" },
+
+    { "id": 61, "subject": "Java", "question": "Which keyword creates thread?", "options": ["implements Runnable", "extends Thread", "Both", "None"], "correctAnswer": "Both" },
+    { "id": 62, "subject": "Java", "question": "Which stream is used to read data?", "options": ["InputStream", "OutputStream", "Writer", "Reader"], "correctAnswer": "InputStream" },
+    { "id": 63, "subject": "Java", "question": "Which keyword is used for package?", "options": ["import", "package", "include", "namespace"], "correctAnswer": "package" },
+    { "id": 64, "subject": "Java", "question": "Which keyword throws exception?", "options": ["throw", "throws", "catch", "try"], "correctAnswer": "throw" },
+    { "id": 65, "subject": "Java", "question": "Which loop executes at least once?", "options": ["for", "while", "do-while", "foreach"], "correctAnswer": "do-while" },
+
+    { "id": 66, "subject": "Python", "question": "Which keyword deletes variable?", "options": ["remove", "delete", "del", "pop"], "correctAnswer": "del" },
+    { "id": 67, "subject": "Python", "question": "Which statement does nothing?", "options": ["continue", "break", "pass", "skip"], "correctAnswer": "pass" },
+    { "id": 68, "subject": "Python", "question": "Which function returns ASCII?", "options": ["char()", "ord()", "ascii()", "chr()"], "correctAnswer": "ord()" },
+    { "id": 69, "subject": "Python", "question": "Which keyword is used for inheritance?", "options": ["extends", "inherits", "super", "class"], "correctAnswer": "class" },
+    { "id": 70, "subject": "Python", "question": "Which datatype is ordered?", "options": ["Set", "Dictionary", "List", "None"], "correctAnswer": "List" },
+
+    { "id": 71, "subject": "OOP", "question": "Which feature increases security?", "options": ["Inheritance", "Encapsulation", "Polymorphism", "Abstraction"], "correctAnswer": "Encapsulation" },
+    { "id": 72, "subject": "OOP", "question": "Which concept uses IS-A relationship?", "options": ["Aggregation", "Inheritance", "Composition", "Encapsulation"], "correctAnswer": "Inheritance" },
+    { "id": 73, "subject": "OOP", "question": "Which concept uses HAS-A relationship?", "options": ["Inheritance", "Abstraction", "Aggregation", "Polymorphism"], "correctAnswer": "Aggregation" },
+    { "id": 74, "subject": "OOP", "question": "Which binding happens at runtime?", "options": ["Static", "Dynamic", "Early", "Compile"], "correctAnswer": "Dynamic" },
+    { "id": 75, "subject": "OOP", "question": "Which keyword prevents method override?", "options": ["static", "final", "private", "protected"], "correctAnswer": "final" },
+
+    { "id": 76, "subject": "Java", "question": "Which keyword is used to import packages?", "options": ["include", "import", "package", "using"], "correctAnswer": "import" },
+    { "id": 77, "subject": "Java", "question": "Which datatype stores decimal?", "options": ["int", "float", "char", "boolean"], "correctAnswer": "float" },
+    { "id": 78, "subject": "Java", "question": "Which operator compares objects?", "options": ["=", "==", "equals()", "!"], "correctAnswer": "equals()" },
+    { "id": 79, "subject": "Java", "question": "Which keyword is used for interface?", "options": ["class", "interface", "implements", "extends"], "correctAnswer": "interface" },
+    { "id": 80, "subject": "Java", "question": "Which method stops thread?", "options": ["stop()", "end()", "kill()", "exit()"], "correctAnswer": "stop()" },
+
+    { "id": 81, "subject": "Python", "question": "Which function converts int to string?", "options": ["int()", "str()", "float()", "chr()"], "correctAnswer": "str()" },
+    { "id": 82, "subject": "Python", "question": "Which keyword checks condition?", "options": ["check", "if", "when", "cond"], "correctAnswer": "if" },
+    { "id": 83, "subject": "Python", "question": "Which keyword handles error?", "options": ["catch", "except", "error", "handle"], "correctAnswer": "except" },
+    { "id": 84, "subject": "Python", "question": "Which data type is mutable?", "options": ["Tuple", "String", "List", "Int"], "correctAnswer": "List" },
+    { "id": 85, "subject": "Python", "question": "Which loop iterates sequence?", "options": ["while", "for", "do", "repeat"], "correctAnswer": "for" },
+
+    { "id": 86, "subject": "OOP", "question": "Which feature supports flexibility?", "options": ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"], "correctAnswer": "Polymorphism" },
+    { "id": 87, "subject": "OOP", "question": "Which class cannot be instantiated?", "options": ["Normal", "Abstract", "Public", "Private"], "correctAnswer": "Abstract" },
+    { "id": 88, "subject": "OOP", "question": "Which keyword creates abstract method?", "options": ["abstract", "virtual", "interface", "static"], "correctAnswer": "abstract" },
+    { "id": 89, "subject": "OOP", "question": "Which concept uses method hiding?", "options": ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"], "correctAnswer": "Encapsulation" },
+    { "id": 90, "subject": "OOP", "question": "Which principle reduces complexity?", "options": ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"], "correctAnswer": "Abstraction" },
+
+    { "id": 91, "subject": "Java", "question": "Which type of memory is heap?", "options": ["Static", "Dynamic", "Stack", "Register"], "correctAnswer": "Dynamic" },
+    { "id": 92, "subject": "Java", "question": "Which keyword is used for garbage collection?", "options": ["gc", "delete", "finalize", "System.gc()"], "correctAnswer": "System.gc()" },
+    { "id": 93, "subject": "Java", "question": "Which datatype stores true/false?", "options": ["int", "char", "boolean", "float"], "correctAnswer": "boolean" },
+    { "id": 94, "subject": "Java", "question": "Which operator is logical AND?", "options": ["&", "&&", "|", "||"], "correctAnswer": "&&" },
+    { "id": 95, "subject": "Java", "question": "Which keyword creates constant?", "options": ["static", "const", "final", "define"], "correctAnswer": "final" },
+
+    { "id": 96, "subject": "Python", "question": "Which function sorts list?", "options": ["sort()", "order()", "arrange()", "sorted()"], "correctAnswer": "sort()" },
+    { "id": 97, "subject": "Python", "question": "Which keyword defines lambda?", "options": ["lambda", "def", "function", "fun"], "correctAnswer": "lambda" },
+    { "id": 98, "subject": "Python", "question": "Which operator compares equality?", "options": ["=", "==", "!=", "<>"], "correctAnswer": "==" },
+    { "id": 99, "subject": "Python", "question": "Which statement exits program?", "options": ["exit()", "stop()", "break", "return"], "correctAnswer": "exit()" },
+    { "id": 100, "subject": "Python", "question": "Which keyword is used to raise exception?", "options": ["raise", "throw", "except", "error"], "correctAnswer": "raise" }
+  ]
+}
+
 
   constructor() {}
 

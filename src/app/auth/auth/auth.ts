@@ -18,13 +18,13 @@ export class Auth {
   isLoading = signal<boolean>(false);
 
   // Login form
-  loginStudentId = signal<string>('');
-  loginPassword = signal<string>('');
+  loginStudentId: string = '';
+  loginPassword: string = '';
 
   // Register form
-  registerEmail = signal<string>('');
-  registerStudentId = signal<string>('');
-  registerPassword = signal<string>('');
+  registerEmail: string = '';
+  registerStudentId: string = '';
+  registerPassword: string = '';
 
   constructor(
     private authService: AuthService,
@@ -39,16 +39,16 @@ export class Auth {
   }
 
   private resetForms() {
-    this.loginStudentId.set('');
-    this.loginPassword.set('');
-    this.registerEmail.set('');
-    this.registerStudentId.set('');
-    this.registerPassword.set('');
+    this.loginStudentId = '';
+    this.loginPassword = '';
+    this.registerEmail = '';
+    this.registerStudentId = '';
+    this.registerPassword = '';
   }
 
   async onLogin() {
-    const studentId = this.loginStudentId().trim();
-    const password = this.loginPassword().trim();
+    const studentId = this.loginStudentId.trim();
+    const password = this.loginPassword.trim();
 
     if (!studentId || !password) {
       this.toasterService.error('Please enter Student ID and Password');
@@ -61,9 +61,9 @@ export class Auth {
       const result = await this.authService.login(studentId, password);
       if (result.success) {
         this.toasterService.success(result.message);
-        // Redirect to exam portal
+        // After successful registration, switch to login form
         setTimeout(() => {
-          this.router.navigate(['/exam']);
+          this.toggleForm('login');
         }, 500);
       } else {
         this.toasterService.error(result.message);
@@ -76,9 +76,9 @@ export class Auth {
   }
 
   async onRegister() {
-    const email = this.registerEmail().trim();
-    const studentId = this.registerStudentId().trim();
-    const password = this.registerPassword().trim();
+    const email = this.registerEmail.trim();
+    const studentId = this.registerStudentId.trim();
+    const password = this.registerPassword.trim();
 
     if (!email || !studentId || !password) {
       this.toasterService.error('Please fill in all fields');

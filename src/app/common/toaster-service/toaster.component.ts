@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToasterService, Toast } from './toaster.service';
 
@@ -12,11 +12,15 @@ import { ToasterService, Toast } from './toaster.service';
 export class ToasterComponent implements OnInit {
   toasts: Toast[] = [];
 
-  constructor(private toasterService: ToasterService) {}
+  constructor(private toasterService: ToasterService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.toasterService.toasts$.subscribe((toasts) => {
-      this.toasts = toasts;
+      // Update view in next microtask to avoid ExpressionChangedAfterItHasBeenCheckedError
+      Promise.resolve().then(() => {
+        this.toasts = toasts;
+        this.cdr.markForCheck();
+      });
     });
   }
 

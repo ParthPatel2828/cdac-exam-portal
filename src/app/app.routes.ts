@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './auth/auth.guard';
+import { Auth } from './auth/auth/auth';
+import { ExamLayout } from './common/exam-layout/exam-layout';
 
 export const routes: Routes = [
   {
@@ -9,13 +11,11 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () =>
-      import('./auth/auth/auth').then((m) => m.Auth),
+    component: Auth,
   },
   {
     path: 'exam',
-    loadComponent: () =>
-      import('./common/exam-layout/exam-layout').then((m) => m.ExamLayout),
+    component: ExamLayout,
     canActivate: [authGuard]
   }
 ];
