@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export interface User {
   studentId: string;
   email?: string;
+  password?: string;
 }
 
 @Injectable({
@@ -31,15 +32,19 @@ export class AuthService {
     return new Promise((resolve) => {
       // Simulate API call
       setTimeout(() => {
-        if (studentId && password) {
-          const user: User = { studentId };
+        // Validate against stored users
+        const users = this.getStoredUsers();
+        const matched = users.find(u => u.studentId === studentId && u.password === password);
+
+        if (matched) {
+          const user: User = { studentId: matched.studentId, email: matched.email };
           localStorage.setItem('currentUser', JSON.stringify(user));
           localStorage.setItem('token', 'fake-token-' + Date.now());
           this.currentUser.next(user);
           this.isAuthenticated.next(true);
           resolve({ success: true, message: 'Login successful!' });
         } else {
-          resolve({ success: false, message: 'Invalid credentials!' });
+          resolve({ success: false, message: 'Invalid Student ID or Password!' });
         }
       }, 500);
     });
@@ -49,18 +54,40 @@ export class AuthService {
     return new Promise((resolve) => {
       // Simulate API call
       setTimeout(() => {
-        if (email && studentId && password) {
-          const user: User = { studentId, email };
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          localStorage.setItem('token', 'fake-token-' + Date.now());
-          this.currentUser.next(user);
-          this.isAuthenticated.next(true);
-          resolve({ success: true, message: 'Registration successful! Redirecting to exam...' });
-        } else {
+        if (!email || !studentId || !password) {
           resolve({ success: false, message: 'Please fill all fields!' });
+          return;
         }
+
+        const users = this.getStoredUsers();
+
+        // Prevent duplicate registrations
+        const exists = users.some(u => u.studentId === studentId || (u.email && u.email === email));
+        if (exists) {
+          resolve({ success: false, message: 'User with this Student ID or Email already exists.' });
+          return;
+        }
+
+        const newUser: User = { studentId, email, password };
+        users.push(newUser);
+        this.saveUsers(users);
+
+        resolve({ success: true, message: 'Registration successful! Please login to continue.' });
       }, 500);
     });
+  }
+
+  private getStoredUsers(): User[] {
+    const raw = localStorage.getItem('users');
+    try {
+      return raw ? JSON.parse(raw) as User[] : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  private saveUsers(users: User[]): void {
+    localStorage.setItem('users', JSON.stringify(users));
   }
 
   logout(): void {
